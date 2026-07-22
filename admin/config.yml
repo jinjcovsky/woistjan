@@ -2,7 +2,7 @@ backend:
   name: github
   repo: jinjcovsky/woistjan
   branch: main
-  base_url: https://your-decap-worker.your-subdomain.workers.dev # We will generate this in Step 2
+  base_url: https://woistjan-proxy.jkienast-at.workers.dev
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
