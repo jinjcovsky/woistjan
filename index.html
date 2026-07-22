@@ -18,9 +18,13 @@ title: My Live Location Blog
     <h1>{{ page.title }}</h1>
     <p><a href="/map.html">📍 View My Live Location Map</a></p>
     
+    <h2>All Post Locations</h2>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Ensure the map container has a defined height -->
+    <div id="master-map" style="height: 400px; width: 100%; margin-bottom: 30px; border-radius: 8px; z-index: 1;"></div>
+    
     <h2>Recent Posts</h2>
     <ul class="post-list">
-        <!-- This is the Jekyll loop that fetches your posts -->
         {% for post in site.posts %}
         <li>
             <a href="{{ post.url }}">{{ post.title }}</a><br>
@@ -28,5 +32,24 @@ title: My Live Location Blog
         </li>
         {% endfor %}
     </ul>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map with a default center
+        const masterMap = L.map('master-map').setView([47.2692, 11.4041], 4);
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(masterMap);
+
+        // Loop through all posts and inject markers using Jekyll
+        {% for post in site.posts %}
+            {% if post.lat and post.lon %}
+                L.marker([{{ post.lat }}, {{ post.lon }}])
+                    .addTo(masterMap)
+                    .bindPopup("<a href='{{ post.url }}'><b>{{ post.title | escape }}</b></a><br>{{ post.date | date: '%b %d, %Y' }}");
+            {% endif %}
+        {% endfor %}
+    </script>
 </body>
 </html>
