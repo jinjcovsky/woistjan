@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: your-github-username/your-repo-name # Update this
+  repo: jinjcovsky/woistjan
   branch: main
   base_url: https://your-decap-worker.your-subdomain.workers.dev # We will generate this in Step 2
 
