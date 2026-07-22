@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }
+        .back-link { display: inline-block; margin-bottom: 20px; text-decoration: none; color: #0366d6; }
+        .post-date { color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-link">← Back to Home</a>
+    
+    <h1>{{ page.title }}</h1>
+    <p class="post-date">{{ page.date | date: "%B %d, %Y" }}</p>
+    
+    <!-- This tag injects the Markdown body of your post -->
+    <div>
+        {{ content }}
+    </div>
+</body>
+</html>
