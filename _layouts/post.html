@@ -15,8 +15,28 @@
     
     <h1>{{ page.title }}</h1>
     <p class="post-date">{{ page.date | date: "%B %d, %Y" }}</p>
+
     
-    <!-- This tag injects the Markdown body of your post -->
+    {% if page.lat and page.lon %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <div id="post-map" style="height: 300px; width: 100%; margin-bottom: 20px; border-radius: 8px;"></div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const lat = {{ page.lat }};
+        const lon = {{ page.lon }};
+        const postMap = L.map('post-map').setView([lat, lon], 14);
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(postMap);
+        
+        L.marker([lat, lon]).addTo(postMap)
+            .bindPopup("<b>{{ page.title | escape }}</b>")
+            .openPopup();
+    </script>
+    {% endif %}
+
     <div>
         {{ content }}
     </div>
