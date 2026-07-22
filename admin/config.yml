@@ -1,0 +1,19 @@
+backend:
+  name: github
+  repo: your-github-username/your-repo-name # Update this
+  branch: main
+  base_url: https://your-decap-worker.your-subdomain.workers.dev # We will generate this in Step 2
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Body", name: "body", widget: "markdown"}
