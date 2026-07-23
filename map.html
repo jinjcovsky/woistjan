@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Live Location</title>
+    <title>Jans Live-Standort</title>
     
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
@@ -25,7 +25,7 @@
 </head>
 <body>
     <div id="map"></div>
-    <div id="info" class="info-box">Loading location...</div>
+    <div id="info" class="info-box">Lade Standort...</div>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
@@ -63,13 +63,13 @@
                     const lastUpdate = new Date(data.time * 1000).toLocaleString();
                     
                     // Update the popup and floating info box
-                    const statusText = `<b>Battery:</b> ${data.battery}%<br><b>Last seen:</b> ${lastUpdate}`;
+                    const statusText = `<b>Akku:</b> ${data.battery}%<br><b>Zuletzt gesehen:</b> ${lastUpdate}`;
                     marker.bindPopup(statusText);
                     document.getElementById('info').innerHTML = statusText;
                 }
             } catch (error) {
-                console.error("Error fetching location:", error);
-                document.getElementById('info').innerHTML = "Error loading location data.";
+                console.error("Problem den Standort abzurufen:", error);
+                document.getElementById('info').innerHTML = "Problem beim Laden der Standortdaten.";
             }
         }
 
