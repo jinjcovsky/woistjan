@@ -136,8 +136,7 @@ pre, code {
     font-size: 0.9em;
 }
 
-/* --- 1. GLOBALLY SCALE DOWN BLOG IMAGES (Firewalled from the map) --- */
-/* The :not() ensures these styling rules NEVER touch the Leaflet map */
+/* --- 1. GLOBALLY SCALE DOWN BLOG IMAGES (Firewalled) --- */
 img:not(.leaflet-container img) {
     max-width: 100%;
     height: auto;
@@ -147,11 +146,22 @@ img:not(.leaflet-container img) {
     box-shadow: var(--shadow);
 }
 
-/* --- 2. LEAFLET PINCH-ZOOM SAFEGUARD --- */
-/* Because of the firewall above, Leaflet is safe. We just enforce no transitions 
-   so the markers stay perfectly glued to their coordinates during a mobile pinch. */
-.leaflet-marker-icon,
+/* --- 2. LEAFLET FIREFOX MOBILE SAFEGUARD --- */
+.leaflet-container img {
+    max-width: none !important;
+    max-height: none !important;
+}
+
+/* Force Firefox to respect the exact dimensions and transform logic */
+.leaflet-marker-icon {
+    width: 25px !important;
+    height: 41px !important;
+    box-sizing: content-box !important;     /* Stops Firefox from adding phantom padding */
+    transform-origin: 0 0 !important;       /* THE MAGIC FIX: Forces Firefox to transform from top-left, stopping the drift */
+}
+
 .leaflet-marker-shadow {
-    transition: none !important;
-    animation: none !important; 
+    width: 41px !important;
+    height: 41px !important;
+    transform-origin: 0 0 !important;
 }
