@@ -148,31 +148,15 @@ pre, code {
     font-size: 0.9em;
 }
 
-/* --- Leaflet image safeguard (place at end of assets/style.css) --- */
-.leaflet-container img,
-.leaflet-container .leaflet-marker-icon,
-.leaflet-container .leaflet-marker-shadow,
-.leaflet-image-layer img {
-    /* prevent responsive rules from resizing marker images */
+/* --- Leaflet image safeguard --- */
+/* Only reset the specific global styles that interfere with the map */
+.leaflet-container img {
     max-width: none !important;
     max-height: none !important;
-    width: auto !important;
-    height: auto !important;
-    
-    /* remove decorations that change layout */
     border-radius: 0 !important;
     box-shadow: none !important;
-    
-    /* keep rendering stable during transforms */
-    display: block !important;
-    transition: none !important;
-    will-change: transform !important;
+    padding: 0 !important;
+    background: transparent !important;
 }
 
-/* Lock the marker pixel size to the standard Leaflet icon (adjust if you use a different icon) */
-.leaflet-container .leaflet-marker-icon {
-    width: 25px !important;
-    height: 41px !important;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-}
+/* Remove the width/height !important rules entirely so Leaflet can use its own inline styles for tiles, shadows, and markers. */
