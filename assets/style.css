@@ -73,25 +73,17 @@ a:hover {
     transform: translateY(-1px);
 }
 
-/* --- MEDIA (Images & Maps) --- */
-# img {
-#    max-width: 100%;
-#    height: auto;
-#    border-radius: var(--border-radius);
-#    display: block;
-#    margin: 30px auto;
-#   box-shadow: var(--shadow);
-# }
-
-# .leaflet-container img {
-#    max-width: none !important;
-#    box-shadow: none !important;
-#    border-radius: 0 !important;
-#    /* Reset layout rules without '!important' so Leaflet's positioning math works */
-#    margin: 0;
-#    padding: 0;
-#    display: inline;
-# }
+/* Scoped images for post/content area (prevents affecting Leaflet) */
+.post img,
+.content img,
+.article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    display: block;
+    margin: 30px auto;
+    box-shadow: var(--shadow);
+}
 
 #master-map, #post-map {
     border-radius: var(--border-radius);
@@ -154,4 +146,19 @@ pre, code {
     border-radius: 6px;
     padding: 0.2em 0.4em;
     font-size: 0.9em;
+}
+
+/* Fix: prevent global img rules from breaking Leaflet markers */
+.leaflet-container img,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-image-layer img {
+  max-width: none !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  display: block !important;
+  height: auto !important;
+  width: auto !important;
+  vertical-align: middle !important;
 }
