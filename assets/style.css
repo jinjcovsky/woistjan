@@ -160,7 +160,6 @@ pre, code {
     height: auto !important;
     
     /* remove decorations that change layout */
-    margin: 0 !important;
     border-radius: 0 !important;
     box-shadow: none !important;
     
