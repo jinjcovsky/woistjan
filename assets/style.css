@@ -85,12 +85,13 @@ img {
 
 .leaflet-container img {
     max-width: none !important;
-    height: auto !important;
-    margin: 0 !important;
     box-shadow: none !important;
     border-radius: 0 !important;
+    /* Reset layout rules without '!important' so Leaflet's positioning math works */
+    margin: 0;
+    padding: 0;
+    display: inline;
 }
-
 #master-map, #post-map {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
