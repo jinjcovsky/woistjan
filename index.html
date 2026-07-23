@@ -11,14 +11,14 @@ title: My Live Location Blog
 </head>
 <body>
     <h1>{{ page.title }}</h1>
-    <p><a href="/map.html">📍 View My Live Location Map</a></p>
+    <p><a href="/map.html">📍 Wo ist Jan?</a></p>
     
-    <h2>All Post Locations</h2>
+    <h2>Alle Orte</h2>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Ensure the map container has a defined height -->
     <div id="master-map" style="height: 400px; width: 100%; margin-bottom: 30px; border-radius: 8px; z-index: 1;"></div>
     
-    <h2>Recent Posts</h2>
+    <h2>Neuste Orte</h2>
     <ul class="post-list">
         {% for post in site.posts %}
         <li>
