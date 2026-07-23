@@ -83,6 +83,22 @@ img {
     box-shadow: var(--shadow);
 }
 
+.leaflet-container img {
+    max-width: none !important;
+    height: auto !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+#master-map, #post-map {
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    border: 4px solid var(--card-bg);
+    overflow: hidden;
+    z-index: 1;
+}
+
 #master-map, #post-map {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
