@@ -148,31 +148,32 @@ pre, code {
     font-size: 0.9em;
 }
 
-/* --- Strong Leaflet image safeguard --- */
+/* --- Leaflet image safeguard (place at end of assets/style.css) --- */
 .leaflet-container img,
-.leaflet-marker-icon,
-.leaflet-marker-shadow,
+.leaflet-container .leaflet-marker-icon,
+.leaflet-container .leaflet-marker-shadow,
 .leaflet-image-layer img {
-  /* stop any responsive rules from changing marker images */
-  max-width: none !important;
-  max-height: none !important;
-  width: auto !important;
-  height: auto !important;
-
-  /* remove visual decorations that can change layout */
-  margin: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-
-  /* make marker rendering stable during transforms */
-  display: block !important;
-  transition: none !important;
-  will-change: transform !important;
-  transform-origin: center bottom !important;
+    /* prevent responsive rules from resizing marker images */
+    max-width: none !important;
+    max-height: none !important;
+    width: auto !important;
+    height: auto !important;
+    
+    /* remove decorations that change layout */
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    
+    /* keep rendering stable during transforms */
+    display: block !important;
+    transition: none !important;
+    will-change: transform !important;
 }
 
-/* If you use a fixed-size PNG/SVG marker, lock its pixel size (adjust values to your icon) */
-.leaflet-marker-icon {
-  width: 32px !important;
-  height: 48px !important;
+/* Lock the marker pixel size to the standard Leaflet icon (adjust if you use a different icon) */
+.leaflet-container .leaflet-marker-icon {
+    width: 25px !important;
+    height: 41px !important;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
