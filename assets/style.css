@@ -74,24 +74,25 @@ a:hover {
 }
 
 /* --- MEDIA (Images & Maps) --- */
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: var(--border-radius);
-    display: block;
-    margin: 30px auto;
-    box-shadow: var(--shadow);
-}
+# img {
+#    max-width: 100%;
+#    height: auto;
+#    border-radius: var(--border-radius);
+#    display: block;
+#    margin: 30px auto;
+#   box-shadow: var(--shadow);
+# }
 
-.leaflet-container img {
-    max-width: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    /* Reset layout rules without '!important' so Leaflet's positioning math works */
-    margin: 0;
-    padding: 0;
-    display: inline;
-}
+# .leaflet-container img {
+#    max-width: none !important;
+#    box-shadow: none !important;
+#    border-radius: 0 !important;
+#    /* Reset layout rules without '!important' so Leaflet's positioning math works */
+#    margin: 0;
+#    padding: 0;
+#    display: inline;
+# }
+
 #master-map, #post-map {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
