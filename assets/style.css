@@ -1,10 +1,10 @@
 /* --- CSS VARIABLES (Theme Colors) --- */
 :root {
-    --bg-color: #f8fafc;
-    --text-color: #334155;
-    --heading-color: #0f172a;
-    --accent-color: #2563eb;
-    --accent-hover: #1d4ed8;
+    --bg-color: #f9fcfa;
+    --text-color: #0d170f;
+    --heading-color: #69ab7f;
+    --accent-color: #a6b5ce;
+    --accent-hover: #918bbf;
     --card-bg: #ffffff;
     --border-radius: 12px;
     --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
