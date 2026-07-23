@@ -136,9 +136,9 @@ pre, code {
     font-size: 0.9em;
 }
 
-/* --- 1. GLOBALLY SCALE DOWN BLOG IMAGES --- */
-/* This catches all markdown images so they never exceed the screen width */
-img {
+/* --- 1. GLOBALLY SCALE DOWN BLOG IMAGES (Firewalled from the map) --- */
+/* The :not() ensures these styling rules NEVER touch the Leaflet map */
+img:not(.leaflet-container img) {
     max-width: 100%;
     height: auto;
     border-radius: var(--border-radius);
@@ -147,25 +147,11 @@ img {
     box-shadow: var(--shadow);
 }
 
-/* --- 2. LEAFLET SAFEGUARD --- */
-/* Reset the global image rules above ONLY for map elements */
-.leaflet-container img {
-    max-width: none !important;
-    max-height: none !important;
-    border-radius: 0;
-    box-shadow: none;
-}
-
-/* Reset the margin for map tiles so the map background doesn't break */
-.leaflet-tile {
-    margin: 0 !important;
-}
-
-/* CRITICAL FIX FOR DRIFTING MARKERS */
+/* --- 2. LEAFLET PINCH-ZOOM SAFEGUARD --- */
+/* Because of the firewall above, Leaflet is safe. We just enforce no transitions 
+   so the markers stay perfectly glued to their coordinates during a mobile pinch. */
 .leaflet-marker-icon,
 .leaflet-marker-shadow {
-    /* We intentionally DO NOT set a margin here so Leaflet's inline positioning math works. */
-    /* Kills global transitions so markers don't "glide" off their coordinates during a zoom */
     transition: none !important;
     animation: none !important; 
 }
