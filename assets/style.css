@@ -73,18 +73,6 @@ a:hover {
     transform: translateY(-1px);
 }
 
-/* Scoped images for post/content area (prevents affecting Leaflet) */
-.post img,
-.content img,
-.article img {
-    max-width: 100%;
-    height: auto;
-    border-radius: var(--border-radius);
-    display: block;
-    margin: 30px auto;
-    box-shadow: var(--shadow);
-}
-
 #master-map, #post-map {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
@@ -148,15 +136,36 @@ pre, code {
     font-size: 0.9em;
 }
 
-/* --- Leaflet image safeguard --- */
-/* Only reset the specific global styles that interfere with the map */
+/* --- 1. GLOBALLY SCALE DOWN BLOG IMAGES --- */
+/* This catches all markdown images so they never exceed the screen width */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    display: block;
+    margin: 30px auto;
+    box-shadow: var(--shadow);
+}
+
+/* --- 2. LEAFLET SAFEGUARD --- */
+/* Reset the global image rules above ONLY for map elements */
 .leaflet-container img {
     max-width: none !important;
     max-height: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    background: transparent !important;
+    border-radius: 0;
+    box-shadow: none;
 }
 
-/* Remove the width/height !important rules entirely so Leaflet can use its own inline styles for tiles, shadows, and markers. */
+/* Reset the margin for map tiles so the map background doesn't break */
+.leaflet-tile {
+    margin: 0 !important;
+}
+
+/* CRITICAL FIX FOR DRIFTING MARKERS */
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+    /* We intentionally DO NOT set a margin here so Leaflet's inline positioning math works. */
+    /* Kills global transitions so markers don't "glide" off their coordinates during a zoom */
+    transition: none !important;
+    animation: none !important; 
+}
